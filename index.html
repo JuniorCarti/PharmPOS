@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NanaPharm POS | Ultimate Pharmacy Management</title>
+    
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <h2>Pharma<span>Pro</span></h2>
+          <p>Ultimate Pharmacy POS</p>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-cash-register"></i>
+            <span>POS Terminal</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-pills"></i>
+            <span>Inventory</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Sales Reports</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Customers</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <h1>Dashboard</h1>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search drugs, transactions..." />
+          </div>
+          <div class="user-profile">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="User"
+            />
+            <span>Dr. Sarah Johnson</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Today's Sales</div>
+                <div class="card-value">$3,842</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>12% from yesterday</span>
+                </div>
+              </div>
+              <div class="card-icon sales-icon">
+                <i class="fas fa-shopping-bag"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Weekly Profit</div>
+                <div class="card-value">$8,756</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>5% from last week</span>
+                </div>
+              </div>
+              <div class="card-icon profit-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Monthly Loss</div>
+                <div class="card-value">$1,245</div>
+                <div class="card-change negative">
+                  <i class="fas fa-arrow-down"></i>
+                  <span>3% from last month</span>
+                </div>
+              </div>
+              <div class="card-icon loss-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Yearly Revenue</div>
+                <div class="card-value">$287,532</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>18% from last year</span>
+                </div>
+              </div>
+              <div class="card-icon inventory-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts">
+          <div class="chart-container">
+            <div class="chart-header">
+              <h3 class="chart-title">Sales Performance</h3>
+              <div class="chart-actions">
+                <select>
+                  <option>Last 7 Days</option>
+                  <option>Last 30 Days</option>
+                  <option>This Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="salesChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-header">
+              <h3 class="chart-title">Profit & Loss</h3>
+              <div class="chart-actions">
+                <select>
+                  <option>Monthly</option>
+                  <option>Quarterly</option>
+                  <option>Yearly</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="profitChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="transactions">
+          <div class="transactions-header">
+            <h3 class="transactions-title">Recent Transactions</h3>
+            <button class="btn-view-all">View All</button>
+          </div>
+          <table class="transactions-table">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#PH-2023-0456</td>
+                <td>John Smith</td>
+                <td>Today, 10:45 AM</td>
+                <td>$124.50</td>
+                <td>
+                  <span class="transaction-status status-completed"
+                    >Completed</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>#PH-2023-0455</td>
+                <td>Maria Garcia</td>
+                <td>Today, 09:30 AM</td>
+                <td>$87.25</td>
+                <td>
+                  <span class="transaction-status status-completed"
+                    >Completed</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>#PH-2023-0454</td>
+                <td>Robert Johnson</td>
+                <td>Today, 08:15 AM</td>
+                <td>$215.80</td>
+                <td>
+                  <span class="transaction-status status-pending">Pending</span>
+                </td>
+              </tr>
+              <tr>
+                <td>#PH-2023-0453</td>
+                <td>Sarah Williams</td>
+                <td>Yesterday, 5:30 PM</td>
+                <td>$63.40</td>
+                <td>
+                  <span class="transaction-status status-cancelled"
+                    >Cancelled</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>#PH-2023-0452</td>
+                <td>Michael Brown</td>
+                <td>Yesterday, 4:15 PM</td>
+                <td>$178.90</td>
+                <td>
+                  <span class="transaction-status status-completed"
+                    >Completed</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- POS Interface (Hidden by default, can be toggled) -->
+        <div class="pos-interface" style="display: none">
+          <div class="products-grid">
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Amoxicillin 500mg</div>
+              <div class="product-price">$12.99</div>
+              <div class="product-stock">In stock: 45</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Lisinopril 10mg</div>
+              <div class="product-price">$8.75</div>
+              <div class="product-stock">In stock: 32</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Atorvastatin 20mg</div>
+              <div class="product-price">$15.50</div>
+              <div class="product-stock">In stock: 28</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Metformin 500mg</div>
+              <div class="product-price">$6.99</div>
+              <div class="product-stock">In stock: 67</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Omeprazole 20mg</div>
+              <div class="product-price">$10.25</div>
+              <div class="product-stock">In stock: 39</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Albuterol Inhaler</div>
+              <div class="product-price">$32.99</div>
+              <div class="product-stock">In stock: 18</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Ibuprofen 200mg</div>
+              <div class="product-price">$5.99</div>
+              <div class="product-stock">In stock: 124</div>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://via.placeholder.com/80"
+                alt="Product"
+                class="product-image"
+              />
+              <div class="product-name">Acetaminophen 500mg</div>
+              <div class="product-price">$4.99</div>
+              <div class="product-stock">In stock: 89</div>
+            </div>
+          </div>
+          <div class="cart-container">
+            <div class="cart-header">
+              <h3 class="cart-title">Current Sale</h3>
+              <button class="btn-clear">Clear</button>
+            </div>
+            <div class="cart-items">
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <div class="cart-item-name">Amoxicillin 500mg</div>
+                  <div class="cart-item-price">$12.99 each</div>
+                </div>
+                <div class="cart-item-quantity">
+                  <button class="quantity-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <span class="quantity-value">2</span>
+                  <button class="quantity-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="cart-item-total">$25.98</div>
+              </div>
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <div class="cart-item-name">Lisinopril 10mg</div>
+                  <div class="cart-item-price">$8.75 each</div>
+                </div>
+                <div class="cart-item-quantity">
+                  <button class="quantity-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <span class="quantity-value">1</span>
+                  <button class="quantity-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <div class="cart-item-total">$8.75</div>
+              </div>
+            </div>
+            <div class="cart-totals">
+              <div class="total-row">
+                <span class="total-label">Subtotal</span>
+                <span class="total-value">$34.73</span>
+              </div>
+              <div class="total-row">
+                <span class="total-label">Tax (6%)</span>
+                <span class="total-value">$2.08</span>
+              </div>
+              <div class="total-row grand-total">
+                <span class="total-label">Total</span>
+                <span class="total-value">$36.81</span>
+              </div>
+            </div>
+            <button class="checkout-btn">Complete Sale</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Charts
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sales Chart
+        const salesCtx = document.getElementById("salesChart").getContext("2d");
+        const salesChart = new Chart(salesCtx, {
+          type: "line",
+          data: {
+            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            datasets: [
+              {
+                label: "Sales ($)",
+                data: [1200, 1900, 1700, 2100, 2400, 1800, 1500],
+                backgroundColor: "rgba(91, 192, 190, 0.2)",
+                borderColor: "rgba(91, 192, 190, 1)",
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: "rgba(0, 0, 0, 0.05)",
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+
+        // Profit & Loss Chart
+        const profitCtx = document
+          .getElementById("profitChart")
+          .getContext("2d");
+        const profitChart = new Chart(profitCtx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                label: "Profit",
+                data: [
+                  4500, 5200, 4800, 6100, 5800, 6300, 6700, 7200, 6900, 7500,
+                  8200, 8900,
+                ],
+                backgroundColor: "rgba(82, 183, 136, 0.7)",
+                borderColor: "rgba(82, 183, 136, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Loss",
+                data: [
+                  1200, 800, 1500, 900, 1100, 700, 600, 500, 800, 600, 400, 300,
+                ],
+                backgroundColor: "rgba(230, 57, 70, 0.7)",
+                borderColor: "rgba(230, 57, 70, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: "rgba(0, 0, 0, 0.05)",
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+
+        // Toggle between Dashboard and POS
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navItems.forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+
+            if (this.querySelector("span").textContent === "POS Terminal") {
+              document.querySelector(".cards").style.display = "none";
+              document.querySelector(".charts").style.display = "none";
+              document.querySelector(".transactions").style.display = "none";
+              document.querySelector(".pos-interface").style.display = "grid";
+            } else {
+              document.querySelector(".cards").style.display = "grid";
+              document.querySelector(".charts").style.display = "grid";
+              document.querySelector(".transactions").style.display = "block";
+              document.querySelector(".pos-interface").style.display = "none";
+            }
+          });
+        });
+
+        // POS functionality
+        const productCards = document.querySelectorAll(".product-card");
+        const cartItemsContainer = document.querySelector(".cart-items");
+        const subtotalElement = document.querySelector(
+          ".total-value:first-child"
+        );
+        const taxElement = document.querySelector(".total-value:nth-child(2)");
+        const totalElement = document.querySelector(
+          ".grand-total .total-value"
+        );
+
+        let cart = [];
+
+        productCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const name = this.querySelector(".product-name").textContent;
+            const price = parseFloat(
+              this.querySelector(".product-price").textContent.replace("$", "")
+            );
+
+            // Check if item already in cart
+            const existingItem = cart.find((item) => item.name === name);
+
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              cart.push({
+                name,
+                price,
+                quantity: 1,
+              });
+            }
+
+            updateCart();
+          });
+        });
+
+        function updateCart() {
+          // Clear cart display
+          cartItemsContainer.innerHTML = "";
+
+          let subtotal = 0;
+
+          // Add each item to cart display
+          cart.forEach((item) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+
+            const itemElement = document.createElement("div");
+            itemElement.className = "cart-item";
+            itemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(
+                              2
+                            )} each</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                            <span class="quantity-value">${item.quantity}</span>
+                            <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="cart-item-total">$${itemTotal.toFixed(
+                          2
+                        )}</div>
+                    `;
+
+            cartItemsContainer.appendChild(itemElement);
+          });
+
+          // Update totals
+          const tax = subtotal * 0.06;
+          const total = subtotal + tax;
+
+          subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+          taxElement.textContent = `$${tax.toFixed(2)}`;
+          totalElement.textContent = `$${total.toFixed(2)}`;
+
+          // Add event listeners to quantity buttons
+          document.querySelectorAll(".quantity-btn.minus").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const itemName =
+                this.closest(".cart-item").querySelector(
+                  ".cart-item-name"
+                ).textContent;
+              const item = cart.find((i) => i.name === itemName);
+
+              if (item.quantity > 1) {
+                item.quantity -= 1;
+              } else {
+                cart = cart.filter((i) => i.name !== itemName);
+              }
+
+              updateCart();
+            });
+          });
+
+          document.querySelectorAll(".quantity-btn.plus").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const itemName =
+                this.closest(".cart-item").querySelector(
+                  ".cart-item-name"
+                ).textContent;
+              const item = cart.find((i) => i.name === itemName);
+              item.quantity += 1;
+              updateCart();
+            });
+          });
+        }
+
+        // Clear cart
+        document
+          .querySelector(".btn-clear")
+          .addEventListener("click", function () {
+            cart = [];
+            updateCart();
+          });
+
+        // Checkout
+        document
+          .querySelector(".checkout-btn")
+          .addEventListener("click", function () {
+            if (cart.length > 0) {
+              alert(
+                `Sale completed for $${totalElement.textContent.replace(
+                  "$",
+                  ""
+                )}`
+              );
+              cart = [];
+              updateCart();
+            } else {
+              alert("Cart is empty. Add items before checkout.");
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
